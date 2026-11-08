@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Céren — Chawan, bát trà matcha</title>
+  <meta name="description" content="Céren là nhà gốm mới với một sản phẩm duy nhất: chawan, chiếc bát đánh matcha mang tinh thần trà đạo Nhật Bản, với nhiều sắc men và họa tiết.">
+  <meta name="theme-color" content="#f5eddf">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%23f5eddf' stroke='%23b8934f' stroke-width='3'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia,serif' font-size='30' fill='%238d6c35'%3EC%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300&text=%E8%8C%B6%E7%A2%97&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip" href="#cau-chuyen">Bỏ qua, tới nội dung</a>
+
+  <!-- ============ ĐẦU TRANG ============ -->
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="Céren — về đầu trang">
+      <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="24" cy="24" r="18.5" fill="none" stroke="currentColor" stroke-width=".8"/>
+        <text x="24" y="29.5" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="17" font-weight="600" fill="currentColor">C</text>
+      </svg>
+      <span class="brand__word">Céren</span>
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Mở menu"><span></span><span></span></button>
+    <nav class="nav__links" id="navLinks" aria-label="Điều hướng chính">
+      <a href="#cau-chuyen">Câu chuyện</a>
+      <a href="#san-pham">Sản phẩm</a>
+      <a href="#men-hoa-tiet">Men &amp; họa tiết</a>
+      <a href="#ban-ve">Bản vẽ</a>
+      <a href="#nghi-thuc">Nghi thức</a>
+      <a href="#lien-he" class="nav__cta">Liên hệ</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ BANNER 3D ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="ring ring--1"></span><span class="ring ring--2"></span><span class="ring ring--3"></span>
+        <span class="kanji" lang="ja">茶碗</span>
+      </div>
+
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">Céren · Gốm · Chawan</p>
+          <h1 id="hero-title">Một chiếc bát,<br><em>một nghi thức</em> trọn vẹn.</h1>
+          <p class="lede">Chawan Céren — chiếc bát đánh matcha mang tinh thần trà đạo Nhật Bản, tạo hình từ từng đường cong đã được tính toán, phủ men dịu và điểm họa tiết nhẹ như hơi thở.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#san-pham">Khám phá chiếc bát</a>
+            <a class="btn btn--ghost" href="#cau-chuyen">Câu chuyện Céren</a>
+          </div>
+          <dl class="hero__facts">
+            <div><dt>Cao</dt><dd>7,5 cm</dd></div>
+            <div><dt>Miệng</dt><dd>Ø 11 cm</dd></div>
+            <div><dt>Sắc men</dt><dd>5 lựa chọn</dd></div>
+          </dl>
+        </div>
+
+        <div class="stage" id="stage">
+          <div class="stage__view">
+            <canvas id="bowl" class="stage__canvas" role="img" aria-label="Mô hình 3D chiếc bát chawan Céren. Kéo để xoay, dùng phím mũi tên để điều chỉnh góc nhìn."></canvas>
+            <div class="stage__fallback" id="stageFallback" hidden>
+              <p>Trình duyệt này chưa hiển thị được mô hình 3D.<br>Bản vẽ mặt cắt của chiếc bát nằm ở mục <a href="#ban-ve">Bản vẽ</a>.</p>
+            </div>
+            <p class="stage__hint" id="stageHint"><span aria-hidden="true">⟲</span> Kéo để xoay</p>
+          </div>
+
+          <div class="controls" id="controls">
+            <div class="controls__row" role="group" aria-label="Chọn sắc men">
+              <div class="swatches" id="swatches"></div>
+              <p class="controls__name" id="glazeName" aria-live="polite"></p>
+            </div>
+            <div class="controls__row controls__row--split">
+              <div class="chips" id="patterns" role="group" aria-label="Chọn họa tiết"></div>
+              <div class="toggles">
+                <button type="button" class="toggle" id="tMatcha" aria-pressed="false"><span class="toggle__dot"></span>Matcha</button>
+                <button type="button" class="toggle" id="tBase" aria-pressed="false"><span class="toggle__dot"></span>Xem đáy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#cau-chuyen" aria-label="Cuộn xuống phần câu chuyện"><span></span></a>
+    </section>
+
+    <!-- ============ TIỂU SỬ / CÂU CHUYỆN ============ -->
+    <section class="section story" id="cau-chuyen" aria-labelledby="story-title">
+      <div class="wrap story__grid">
+        <header class="section__head reveal">
+          <p class="eyebrow">Tiểu sử thương hiệu</p>
+          <h2 id="story-title">Một sản phẩm.<br><em>Làm cho thật trọn.</em></h2>
+          <span class="rule" aria-hidden="true"></span>
+        </header>
+
+        <div class="story__body">
+          <p class="reveal dropcap">Céren là một nhà gốm mới mở, bắt đầu từ một ý nghĩ giản dị: thay vì một bộ sưu tập dài, chỉ làm một sản phẩm — và dành toàn bộ sự chú tâm cho nó. Sản phẩm ấy là <strong>chawan</strong>, chiếc bát đánh matcha.</p>
+          <p class="reveal">Trong trà đạo Nhật Bản, chawan là trái tim của buổi trà. Lòng bát rộng để chổi chasen đánh tan bột trà thành lớp bọt mịn; thành bát đủ dày để giữ ấm nơi lòng bàn tay; miệng bát cong nhẹ vào trong để nước trà không trào khi xoay bát. Mỗi chi tiết ấy, Céren giữ nguyên tinh thần và đo lại bằng từng milimét.</p>
+          <p class="reveal">Chiếc bát của chúng tôi được vẽ kỹ thuật tỉ mỉ — từ độ nghiêng của miệng, độ dày của thành, đến chân đế nhám khắc chìm tên Céren — rồi mới phủ men và điểm họa tiết. Vẻ đẹp ở đây không ồn ào: nó nằm ở sự cân đối, ở ánh men dịu, và ở cảm giác nặng tay vừa đủ khi nâng bát lên.</p>
+
+          <ul class="pillars">
+            <li class="reveal">
+              <span class="pillars__no">I</span>
+              <h3>Tối giản</h3>
+              <p>Một sản phẩm duy nhất, không phân tâm. Mọi nguồn lực dồn vào một chiếc bát.</p>
+            </li>
+            <li class="reveal">
+              <span class="pillars__no">II</span>
+              <h3>Chính xác</h3>
+              <p>Thành bát 3–5 mm, miệng cong dưới 4°, đế Ø 4,5 cm — mọi số đo đều có lý do.</p>
+            </li>
+            <li class="reveal">
+              <span class="pillars__no">III</span>
+              <h3>Tinh tế</h3>
+              <p>Năm sắc men dịu và những họa tiết hoa nằm gọn trong vùng an toàn, không chạm mép.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SẢN PHẨM ============ -->
+    <section class="section product" id="san-pham" aria-labelledby="product-title">
+      <div class="wrap">
+        <header class="section__head section__head--center reveal">
+          <p class="eyebrow">Sản phẩm duy nhất</p>
+          <h2 id="product-title">Chawan Céren</h2>
+          <p class="section__sub">Bát đánh bột matcha Nhật Bản — dáng bát tròn đầy, miệng thu nhẹ, chân đế nhỏ nâng bát như đang lơ lửng.</p>
+        </header>
+
+        <div class="details">
+          <figure class="detail reveal">
+            <div class="detail__img"><img data-snap="d-matcha" alt="Chiếc bát nhìn từ trên xuống, bên trong có matcha" width="480" height="480"></div>
+            <figcaption><h3>Lòng bát rộng, lõm nhẹ</h3><p>Đường kính trong 11–12,5 cm, đáy lõm nhẹ xuống để chổi chasen đánh tan bột trà mà không vón.</p></figcaption>
+          </figure>
+          <figure class="detail reveal">
+            <div class="detail__img"><img data-snap="d-side" alt="Chiếc bát nhìn ngang, miệng cong nhẹ vào trong" width="480" height="480"></div>
+            <figcaption><h3>Miệng cong vào dưới 4°</h3><p>Thành miệng mỏng 3–4 mm, cong nhẹ vào trong để giữ ấm và không trào trà khi xoay bát.</p></figcaption>
+          </figure>
+          <figure class="detail reveal">
+            <div class="detail__img"><img data-snap="d-base" alt="Đáy bát với chân đế nhám khắc chìm tên CEREN" width="480" height="480"></div>
+            <figcaption><h3>Đế nhám, khắc chìm CEREN</h3><p>Chân đế Ø 4,5 cm không tráng men, dày 8 mm, khắc chìm dấu Céren như một chữ ký.</p></figcaption>
+          </figure>
+        </div>
+
+        <div class="specs reveal" aria-label="Thông số kỹ thuật">
+          <h3 class="specs__title">Thông số</h3>
+          <dl class="specs__grid">
+            <div><dt>Chiều cao</dt><dd>7,5 cm</dd></div>
+            <div><dt>Đường kính miệng</dt><dd>11 – 12,5 cm</dd></div>
+            <div><dt>Thân lớn nhất</dt><dd>Ø 12,5 cm · chu vi ≈ 39,3 cm</dd></div>
+            <div><dt>Chân đế</dt><dd>Ø 4,5 cm</dd></div>
+            <div><dt>Thành miệng</dt><dd>0,3 – 0,4 cm</dd></div>
+            <div><dt>Thành bụng</dt><dd>0,4 – 0,5 cm</dd></div>
+            <div><dt>Độ dày đế</dt><dd>0,8 cm</dd></div>
+            <div><dt>Độ cong miệng</dt><dd>&lt; 4°</dd></div>
+          </dl>
+          <p class="specs__price" id="priceLine" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MEN & HỌA TIẾT ============ -->
+    <section class="section glazes" id="men-hoa-tiet" aria-labelledby="glaze-title">
+      <div class="wrap">
+        <header class="section__head section__head--center reveal">
+          <p class="eyebrow">Năm sắc men · Ba họa tiết</p>
+          <h2 id="glaze-title">Mỗi sắc men,<br><em>một tâm trạng.</em></h2>
+          <p class="section__sub">Chạm vào một sắc men để xem trực tiếp trên mô hình 3D ở đầu trang.</p>
+        </header>
+
+        <ul class="gallery" id="gallery"></ul>
+
+        <div class="motifs">
+          <header class="reveal">
+            <h3>Họa tiết trải 360°</h3>
+            <p>Họa tiết chạy quanh thân bát, cao khoảng 1,5 – 2 cm, chừa lề ít nhất 5 mm ở hai đầu để không chạm mép trên và đuôi. Dưới đây là bản trải phẳng — kéo ngang để xem toàn bộ chu vi 393 mm.</p>
+            <div class="chips chips--light" id="stripPatterns" role="group" aria-label="Chọn họa tiết cho bản trải"></div>
+          </header>
+          <div class="strip reveal">
+            <div class="strip__scroll" tabindex="0" aria-label="Bản trải họa tiết 360 độ, cuộn ngang để xem">
+              <canvas id="strip" width="4096" height="256" role="img" aria-label="Bản trải phẳng họa tiết quanh thân bát"></canvas>
+            </div>
+            <div class="strip__ruler" aria-hidden="true">
+              <span>≥ 5 mm</span><span class="strip__line">Chu vi 360° ≈ 39,3 cm (393 mm)</span><span>≥ 5 mm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BẢN VẼ ============ -->
+    <section class="section blueprint" id="ban-ve" aria-labelledby="bp-title">
+      <div class="wrap">
+        <header class="section__head section__head--center reveal">
+          <p class="eyebrow">Bản vẽ kỹ thuật</p>
+          <h2 id="bp-title">Mặt cắt dọc</h2>
+          <p class="section__sub">Hình dạng bát được dựng từ chính các số đo dưới đây — đường cong trong bản vẽ cũng là đường cong của mô hình 3D.</p>
+        </header>
+        <figure class="bp reveal">
+          <div class="bp__paper"><svg id="sectionSvg" viewBox="0 0 860 560" role="img" aria-labelledby="bpT bpD"><title id="bpT">Mặt cắt dọc chiếc bát chawan Céren</title><desc id="bpD">Cao 7,5 cm, đường kính miệng 11 cm, thân lớn nhất 12,5 cm, chân đế 4,5 cm, thành miệng 3 đến 4 mm, thành bụng 4 đến 5 mm, đế dày 8 mm.</desc></svg></div>
+          <figcaption>Đơn vị: cm. Tỉ lệ minh họa.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ PHỤ KIỆN ============ -->
+    <section class="section kuse" aria-labelledby="kuse-title">
+      <div class="wrap kuse__grid">
+        <div class="kuse__fig reveal">
+          <svg id="kuseSvg" viewBox="0 -24 300 404" role="img" aria-label="Bản phác giá đỡ chổi chasen kusenaoshi"></svg>
+        </div>
+        <div class="kuse__text reveal">
+          <p class="eyebrow">Phụ kiện đồng hành</p>
+          <h2 id="kuse-title">Kusenaoshi<br><em>giá đỡ chổi chasen</em></h2>
+          <p>Chổi chasen bằng tre cần được giữ dáng sau mỗi lần dùng. Kusenaoshi nâng đầu chổi, để các sợi tre khô đều và giữ được độ xòe. Đế của kusenaoshi cũng được khắc dấu Céren.</p>
+          <dl class="mini">
+            <div><dt>Chiều cao</dt><dd>7 cm</dd></div>
+            <div><dt>Miệng trên</dt><dd>Ø 3 cm</dd></div>
+            <div><dt>Đế</dt><dd>Ø 5,8 cm</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NGHI THỨC ============ -->
+    <section class="section ritual" id="nghi-thuc" aria-labelledby="ritual-title">
+      <div class="wrap">
+        <header class="section__head section__head--center reveal">
+          <p class="eyebrow">Nghi thức</p>
+          <h2 id="ritual-title">Ba động tác<br><em>của một bát trà.</em></h2>
+        </header>
+        <ol class="steps">
+          <li class="reveal"><span class="steps__no">01</span><h3>Rây bột</h3><p>Rây khoảng 2 g bột matcha vào lòng bát để bột mịn, không vón cục.</p></li>
+          <li class="reveal"><span class="steps__no">02</span><h3>Rót nước</h3><p>Rót khoảng 70 ml nước nóng chừng 80 °C — đủ nóng để trà dậy hương mà không bị đắng gắt.</p></li>
+          <li class="reveal"><span class="steps__no">03</span><h3>Đánh bọt</h3><p>Dùng chổi chasen đánh nhanh theo nét chữ “M”, cổ tay thả lỏng, tới khi bọt mịn phủ kín mặt trà.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ LIÊN HỆ ============ -->
+    <section class="section contact" id="lien-he" aria-labelledby="contact-title">
+      <div class="wrap contact__box reveal">
+        <p class="eyebrow">Liên hệ</p>
+        <h2 id="contact-title">Cùng Céren<br><em>bắt đầu một bát trà.</em></h2>
+        <p class="section__sub" id="contactLead">Thông tin đặt hàng và liên hệ sẽ sớm được cập nhật tại đây.</p>
+        <ul class="contact__list" id="contactList"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <a class="brand brand--foot" href="#top" aria-label="Céren — về đầu trang">
+        <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="24" cy="24" r="18.5" fill="none" stroke="currentColor" stroke-width=".8"/><text x="24" y="29.5" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="17" font-weight="600" fill="currentColor">C</text></svg>
+        <span class="brand__word">Céren</span>
+      </a>
+      <p>Gốm · Chawan · Matcha</p>
+      <p class="footer__copy">© <span id="year">2026</span> Céren. Bảo lưu mọi quyền.</p>
+    </div>
+  </footer>
+
+  <script src="js/site-config.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/patterns.js"></script>
+  <script src="js/chawan3d.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
